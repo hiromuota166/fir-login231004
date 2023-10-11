@@ -1,8 +1,12 @@
-"use client";
-export default function LoginPage() {
+import React from 'react'
+import { Input } from '@chakra-ui/react'
+
+function Page() {
   return (
     <div>
-      helloworld
+      <Input placeholder ="Basic" />
     </div>
   )
 }
+
+export default Page
