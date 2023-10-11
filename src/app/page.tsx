@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "./_lib/context/auth";
 import { login, logout } from "./_lib/auth";
 import { Avatar, Button } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const user = useAuth();
@@ -10,6 +11,7 @@ export default function Home() {
 
   const [useremail, setUseremail] = useState<string>("");
   const [userimg,setUserimg] = useState<string>("");
+  const router = useRouter();
 
   //userが変更されたら実行
   useEffect(() => {
@@ -29,6 +31,10 @@ export default function Home() {
     setWaiting(true);
 
     login()
+    .then(() => {
+      //ログインが成功したら"/login"に遷移する
+      router.push('/login');
+    })
       .catch((error) => {
         console.error(error?.code);
         console.log("ログインに失敗しました。");
