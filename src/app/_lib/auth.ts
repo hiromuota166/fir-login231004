@@ -12,6 +12,10 @@ import {
 
 export const login = (): Promise<UserCredential> => {
   const provider = new GoogleAuthProvider();
+  //ユーザにアカウント選択画面を表示させる
+  provider.setCustomParameters({ 
+    prompt: 'select_account' 
+  });
   return signInWithPopup(auth, provider);
 };
 
